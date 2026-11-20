@@ -1,0 +1,24 @@
+{
+  "log": "BPIC2012",
+  "seed": 0,
+  "n_train": 39712,
+  "n_test": 20904,
+  "n_features": 55,
+  "treated_share_train": 0.2553887993553586,
+  "propensity_best": {
+    "C": 0.1,
+    "penalty": "l1"
+  },
+  "auc_treated_arm_on_treated_test": 0.5784007469069888,
+  "auc_untreated_arm_on_untreated_test": 0.6633599595480328,
+  "mean_pT": 0.43629491329193115,
+  "mean_pU": 0.6010825634002686,
+  "share_cate_positive_rule": 0.45900306161500193,
+  "settings": "CausalLift two-model estimator: XGBClassifier(max_depth=3, n_estimators=100, lr=0.1) per arm with IPW from a LogisticRegression propensity (grid C in {0.1,1,10}, l1/l2), as in Shoush & Dumas causal/causallift_adapted.py",
+  "elapsed_seconds": 875.5792994499207,
+  "timestamp": "2026-09-14T10:02:53Z",
+  "rl_csv_overlap_rows": 20904,
+  "corr_pT_with_shipped": 0.2635791851122617,
+  "corr_pU_with_shipped": 0.3836504473702151,
+  "agreement_cate_sign_rule": 0.49861270570225796
+}

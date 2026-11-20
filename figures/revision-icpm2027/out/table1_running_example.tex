@@ -1,0 +1,29 @@
+\begin{table}[!htb]
+\centering
+\caption{Running example: two BPIC2017 loan applications with the same prefix at their decision point, after the third event; the timing model acts on A and waits on W}
+\label{tab:running}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}rlll@{}}
+\toprule
+\# & Activity & In plain terms & Resource (A and W) \\
+\midrule
+  1 & \texttt{A\_Create Application} & application created & User\_1 \\
+  2 & \texttt{A\_Submitted} & submitted by the customer & User\_1 \\
+  3 & \texttt{W\_Handle leads} & staff follows up the lead & User\_1 \\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\begin{tabular}{@{}lllllr@{}}
+\toprule
+Case & Application & Date & Type & Loan goal & Requested (\euro{}) \\
+\midrule
+  A & 381087716 & 2016-10-31 & new credit & car & 9,000 \\
+  W & 519115732 & 2016-09-27 & new credit & not specified & 18,500 \\
+\bottomrule
+\end{tabular}
+
+\smallskip
+{\footnotesize Open applications in the log at the decision point: 1,963 (A), 2,386 (W). All three events of each case share one timestamp (14:15:00 for A, 12:15:32 for W).}
+\end{table}

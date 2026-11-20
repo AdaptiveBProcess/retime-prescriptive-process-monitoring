@@ -1,0 +1,668 @@
+{
+  "log": "BPIC2017",
+  "variant": "cate_retrained",
+  "reference_state": {
+    "relative_position": 0.2625425457954407,
+    "reliability": 0.6478345990180969,
+    "deviation": 0.7673500776290894,
+    "available_resources": 1.4998090267181396,
+    "Proba_if_Treated": 0.30596157908439636,
+    "Proba_if_Untreated": 0.39344489574432373
+  },
+  "margin_at_reference": -0.9612499475479126,
+  "n_perm_direct": 200,
+  "seeds_direct": [
+    123,
+    7
+  ],
+  "cards": {
+    "A": {
+      "case_id": "Application_381087716",
+      "prefix_nr": 3,
+      "pool_row": 5379,
+      "action": "intervene",
+      "dq": 1.7203278541564941,
+      "p_act": 0.8481711149215698,
+      "r": 0.5298975824121008,
+      "pT": 0.40788254141807556,
+      "pU": 0.5779680013656616,
+      "risky": true,
+      "positive_effect_rule": true,
+      "state": {
+        "relative_position": 0.05454545468091965,
+        "reliability": 0.5298975706100464,
+        "deviation": 0.0,
+        "available_resources": 3.0,
+        "Proba_if_Treated": 0.40788254141807556,
+        "Proba_if_Untreated": 0.5779680013656616
+      },
+      "timing_phi": {
+        "relative_position": 0.18195125460624695,
+        "reliability": 0.39699587225914,
+        "deviation": 0.31408339738845825,
+        "available_resources": -0.04639674723148346,
+        "Proba_if_Treated": -0.6621249914169312,
+        "Proba_if_Untreated": 2.4752492904663086
+      },
+      "timing_sum": 2.659758076071739,
+      "level_shares": {
+        "risk": 0.17442086899227402,
+        "effect": 0.7695675741908258,
+        "native": 0.05601155681690016
+      },
+      "fallback": {
+        "reliability": false,
+        "Proba_if_Treated": false,
+        "Proba_if_Untreated": false
+      },
+      "risk_top": [
+        [
+          "Activity",
+          "W_Handle leads",
+          0.35902019320393946
+        ],
+        [
+          "LoanGoal",
+          "Car",
+          0.1324767065174794
+        ],
+        [
+          "NumberOfTerms_sum",
+          0.0,
+          0.10062113591581989
+        ],
+        [
+          "org:resource",
+          "User_1",
+          0.06876747032561929
+        ],
+        [
+          "OfferedAmount_std",
+          0.0,
+          0.051405331469687725
+        ],
+        [
+          "OfferedAmount_mean",
+          0.0,
+          0.04676369128348173
+        ]
+      ],
+      "effect_top": [
+        [
+          "FirstWithdrawalAmount_max",
+          0.0,
+          0.143206036046613,
+          -0.05382708120159805,
+          0.08937895484501496
+        ],
+        [
+          "Activity",
+          "W_Handle leads",
+          0.14122441952116793,
+          0.23300906563177703,
+          0.37423348515294497
+        ],
+        [
+          "RequestedAmount",
+          9000.0,
+          0.09855690393131226,
+          0.004556107120588421,
+          0.10311301105190068
+        ],
+        [
+          "NumberOfTerms_max",
+          0.0,
+          -0.09433080652030185,
+          0.07675641506910325,
+          -0.017574391451198608
+        ],
+        [
+          "open_cases_min",
+          1963.0,
+          0.08325749010546134,
+          -0.08296820647781715,
+          0.00028928362764418125
+        ],
+        [
+          "open_cases_max",
+          1963.0,
+          -0.07939568066969514,
+          0.07749623263254762,
+          -0.001899448037147522
+        ]
+      ],
+      "flows": [
+        {
+          "input": "Activity",
+          "value": "W_Handle leads",
+          "risk": 0.3349888798882932,
+          "effect_T": -0.260810370522961,
+          "effect_U": 1.0837272839793537,
+          "total": 1.157905793344686,
+          "cancellation": 0.3105760643639873
+        },
+        {
+          "input": "FirstWithdrawalAmount_max",
+          "value": 0.0,
+          "risk": 0.016969793299022033,
+          "effect_T": 0.06024941971375275,
+          "effect_U": 0.2588288216366175,
+          "total": 0.3360480346493923,
+          "cancellation": 0.0
+        },
+        {
+          "input": "LoanGoal",
+          "value": "Car",
+          "risk": 0.12360926869194724,
+          "effect_T": -0.003994783786488486,
+          "effect_U": 0.17892720372481716,
+          "total": 0.2985416886302759,
+          "cancellation": 0.02606444664709595
+        },
+        {
+          "input": "RequestedAmount",
+          "value": 9000.0,
+          "risk": -0.0024003447955764437,
+          "effect_T": -0.005099715682911666,
+          "effect_U": 0.2986007074287859,
+          "total": 0.2911006469502978,
+          "cancellation": 0.049003865816893866
+        },
+        {
+          "input": "timesincecasestart_mean",
+          "value": 0.014677777777777767,
+          "risk": -0.013612118864503451,
+          "effect_T": -0.0010484707115469142,
+          "effect_U": -0.20060066373164115,
+          "total": -0.21526125330769152,
+          "cancellation": 0.0
+        },
+        {
+          "input": "ApplicationType",
+          "value": "New credit",
+          "risk": 0.043267546567462706,
+          "effect_T": -0.033397596344529365,
+          "effect_U": 0.18849928958449733,
+          "total": 0.19836923980743065,
+          "cancellation": 0.2519010263186149
+        },
+        {
+          "input": "NumberOfTerms_sum",
+          "value": 0.0,
+          "risk": 0.09388597703299979,
+          "effect_T": -0.007976587108484102,
+          "effect_U": 0.10816307301185582,
+          "total": 0.1940724629363715,
+          "cancellation": 0.07595822316358836
+        },
+        {
+          "input": "org:resource",
+          "value": "User_1",
+          "risk": 0.064164462871995,
+          "effect_T": 0.008277429560268623,
+          "effect_U": 0.10399704481588004,
+          "total": 0.17643893724814366,
+          "cancellation": 0.0
+        },
+        {
+          "input": "(other attributes)",
+          "risk": 0.050205804955958264,
+          "effect_T": -0.41832431653403096,
+          "effect_U": 0.4551065300161424,
+          "total": 0.0869880184380695,
+          "cancellation": 0.9058200881307359
+        }
+      ],
+      "composed_top": [
+        [
+          "Activity",
+          1.157905793344686
+        ],
+        [
+          "FirstWithdrawalAmount_max",
+          0.3360480346493923
+        ],
+        [
+          "LoanGoal",
+          0.2985416886302759
+        ],
+        [
+          "RequestedAmount",
+          0.2911006469502978
+        ],
+        [
+          "timesincecasestart_mean",
+          -0.21526125330769152
+        ],
+        [
+          "ApplicationType",
+          0.19836923980743065
+        ]
+      ],
+      "native_phi": {
+        "relative_position": 0.18195125460624695,
+        "available_resources": -0.04639674723148346
+      },
+      "direct": {
+        "123": {
+          "top": [
+            [
+              "Activity",
+              0.9122549615241587
+            ],
+            [
+              "RequestedAmount",
+              0.3659941904619336
+            ],
+            [
+              "FirstWithdrawalAmount_max",
+              0.29882981311529877
+            ],
+            [
+              "timesincecasestart_mean",
+              -0.1692813871987164
+            ],
+            [
+              "LoanGoal",
+              0.16362482141703366
+            ],
+            [
+              "open_cases_min",
+              0.16007588306441903
+            ]
+          ],
+          "spearman_vs_composed": 0.84205019879609,
+          "same_top": true
+        },
+        "7": {
+          "top": [
+            [
+              "Activity",
+              0.9071326132118702
+            ],
+            [
+              "RequestedAmount",
+              0.3103950874879956
+            ],
+            [
+              "LoanGoal",
+              0.28326894868165253
+            ],
+            [
+              "FirstWithdrawalAmount_max",
+              0.2788360775634646
+            ],
+            [
+              "ApplicationType",
+              0.17218702726066112
+            ],
+            [
+              "timesincecasestart_mean",
+              -0.163289774954319
+            ]
+          ],
+          "spearman_vs_composed": 0.8509273395011888,
+          "same_top": true
+        }
+      },
+      "hand_risk_path": {
+        "attribute": "Activity",
+        "timing_risk_mass": 0.7110792696475983,
+        "phi_r_attr": 0.35902019320393946,
+        "phi_r_sum": 0.7620904217994567,
+        "logit_r_minus_base": 0.7620904217994573,
+        "path": 0.33498887988829323,
+        "stored_path": 0.3349888798882932
+      },
+      "trace": [
+        {
+          "activity": "A_Create Application",
+          "timestamp": "2016-10-31 14:15:00.828",
+          "resource": "User_1",
+          "open_cases": 1963
+        },
+        {
+          "activity": "A_Submitted",
+          "timestamp": "2016-10-31 14:15:01.985",
+          "resource": "User_1",
+          "open_cases": 1963
+        },
+        {
+          "activity": "W_Handle leads",
+          "timestamp": "2016-10-31 14:15:02.313",
+          "resource": "User_1",
+          "open_cases": 1963
+        }
+      ],
+      "case_attributes": {
+        "ApplicationType": "New credit",
+        "LoanGoal": "Car",
+        "RequestedAmount": "9000.0"
+      }
+    },
+    "W": {
+      "case_id": "Application_519115732",
+      "prefix_nr": 3,
+      "pool_row": 3714,
+      "action": "wait",
+      "dq": -2.3577003479003906,
+      "p_act": 0.08645564317703247,
+      "r": 0.5916369373463781,
+      "pT": 0.701647937297821,
+      "pU": 0.5445060729980469,
+      "risky": true,
+      "positive_effect_rule": false,
+      "state": {
+        "relative_position": 0.05454545468091965,
+        "reliability": 0.5916369557380676,
+        "deviation": 0.0,
+        "available_resources": 2.0,
+        "Proba_if_Treated": 0.701647937297821,
+        "Proba_if_Untreated": 0.5445060729980469
+      },
+      "timing_phi": {
+        "relative_position": -0.06181706115603447,
+        "reliability": -0.13907989859580994,
+        "deviation": -0.08094514161348343,
+        "available_resources": -0.08597508072853088,
+        "Proba_if_Treated": 4.044147491455078,
+        "Proba_if_Untreated": -2.2901058197021484
+      },
+      "timing_sum": 1.386224489659071,
+      "level_shares": {
+        "risk": 0.03282941300466121,
+        "effect": 0.9451188729715322,
+        "native": 0.022051714023806596
+      },
+      "fallback": {
+        "reliability": false,
+        "Proba_if_Treated": false,
+        "Proba_if_Untreated": false
+      },
+      "risk_top": [
+        [
+          "LoanGoal",
+          "Not speficied",
+          0.3568581478703943
+        ],
+        [
+          "Activity",
+          "W_Handle leads",
+          0.3348842758173884
+        ],
+        [
+          "org:resource",
+          "User_1",
+          0.20466092336193645
+        ],
+        [
+          "NumberOfTerms_sum",
+          0.0,
+          0.10517717338375544
+        ],
+        [
+          "MonthlyCost_max",
+          0.0,
+          -0.0741198444595498
+        ],
+        [
+          "RequestedAmount",
+          18500.0,
+          -0.07360478808872034
+        ]
+      ],
+      "effect_top": [
+        [
+          "open_cases_min",
+          2386.0,
+          -0.5609107282292098,
+          0.5633285121992231,
+          0.002417783970013261
+        ],
+        [
+          "LoanGoal",
+          "Not speficied",
+          -0.4316678966977633,
+          0.5631713839713484,
+          0.13150348727358505
+        ],
+        [
+          "RequestedAmount",
+          18500.0,
+          -0.17310990172205493,
+          0.11448327045422048,
+          -0.058626631267834454
+        ],
+        [
+          "FirstWithdrawalAmount_max",
+          0.0,
+          0.14558207570808007,
+          -0.055132523952051996,
+          0.09044955175602809
+        ],
+        [
+          "open_cases_max",
+          2386.0,
+          0.14513569712638855,
+          -0.14951519744470715,
+          -0.0043795003183186056
+        ],
+        [
+          "NumberOfTerms_max",
+          0.0,
+          -0.0945882019517012,
+          0.07701381050050259,
+          -0.017574391451198608
+        ]
+      ],
+      "flows": [
+        {
+          "input": "open_cases_min",
+          "value": 2386.0,
+          "risk": 0.0005366282274965321,
+          "effect_T": 1.2521424064010165,
+          "effect_U": -0.007702936011043066,
+          "total": 1.24497609861747,
+          "cancellation": 0.01222317708517251
+        },
+        {
+          "input": "LoanGoal",
+          "value": "Not speficied",
+          "risk": -0.07750292193386636,
+          "effect_T": 1.251793148529093,
+          "effect_U": -0.4189633814521014,
+          "total": 0.7553268451431252,
+          "cancellation": 0.5679549483826714
+        },
+        {
+          "input": "Activity",
+          "value": "W_Handle leads",
+          "risk": -0.07273060749892342,
+          "effect_T": 0.6697380555555877,
+          "effect_U": -1.1725144089241037,
+          "total": -0.5755069608674395,
+          "cancellation": 0.6994715152897883
+        },
+        {
+          "input": "RequestedAmount",
+          "value": 18500.0,
+          "risk": 0.015985584690280608,
+          "effect_T": 0.25446849334782123,
+          "effect_U": 0.18678144730882162,
+          "total": 0.45723552534692347,
+          "cancellation": 0.0
+        },
+        {
+          "input": "FirstWithdrawalAmount_max",
+          "value": 0.0,
+          "risk": -0.0037731924189763288,
+          "effect_T": -0.12254620477628166,
+          "effect_U": -0.28816764361308556,
+          "total": -0.41448704080834353,
+          "cancellation": 0.0
+        },
+        {
+          "input": "open_cases_max",
+          "value": 2386.0,
+          "risk": 0.0014273097585001887,
+          "effect_T": -0.33233595507363517,
+          "effect_U": 0.013952863916194271,
+          "total": -0.3169557813989407,
+          "cancellation": 0.08846396472926532
+        },
+        {
+          "input": "timesincecasestart_mean",
+          "value": 0.011599999999999966,
+          "risk": 0.006137103766984788,
+          "effect_T": 0.00275943883336902,
+          "effect_U": 0.22069566300316457,
+          "total": 0.22959220560351837,
+          "cancellation": 0.0
+        },
+        {
+          "input": "NumberOfTerms_max",
+          "value": 0.0,
+          "risk": -0.0011552775277468162,
+          "effect_T": 0.17118298811068805,
+          "effect_U": 0.05599111188617182,
+          "total": 0.22601882246911303,
+          "cancellation": 0.010119394536713289
+        },
+        {
+          "input": "(other attributes)",
+          "risk": -0.08894966727304252,
+          "effect_T": 0.8969451205274194,
+          "effect_U": -0.8801785358161671,
+          "total": -0.07218308256179026,
+          "cancellation": 0.9613181959957005
+        }
+      ],
+      "composed_top": [
+        [
+          "open_cases_min",
+          1.24497609861747
+        ],
+        [
+          "LoanGoal",
+          0.7553268451431252
+        ],
+        [
+          "Activity",
+          -0.5755069608674395
+        ],
+        [
+          "RequestedAmount",
+          0.45723552534692347
+        ],
+        [
+          "FirstWithdrawalAmount_max",
+          -0.41448704080834353
+        ],
+        [
+          "open_cases_max",
+          -0.3169557813989407
+        ]
+      ],
+      "native_phi": {
+        "relative_position": -0.06181706115603447,
+        "available_resources": -0.08597508072853088
+      },
+      "direct": {
+        "123": {
+          "top": [
+            [
+              "open_cases_min",
+              1.2251418135687708
+            ],
+            [
+              "LoanGoal",
+              0.9977454352937639
+            ],
+            [
+              "Activity",
+              -0.4501097420975566
+            ],
+            [
+              "RequestedAmount",
+              0.3789430133625865
+            ],
+            [
+              "FirstWithdrawalAmount_max",
+              -0.34103019930422307
+            ],
+            [
+              "OfferedAmount_mean",
+              0.26995387438684704
+            ]
+          ],
+          "spearman_vs_composed": 0.7622434782165222,
+          "same_top": true
+        },
+        "7": {
+          "top": [
+            [
+              "open_cases_min",
+              1.306745221633464
+            ],
+            [
+              "LoanGoal",
+              1.0013291734829546
+            ],
+            [
+              "RequestedAmount",
+              0.45616079315543173
+            ],
+            [
+              "Activity",
+              -0.42719871141016486
+            ],
+            [
+              "FirstWithdrawalAmount_max",
+              -0.31901383923366666
+            ],
+            [
+              "open_cases_max",
+              -0.22644348504021763
+            ]
+          ],
+          "spearman_vs_composed": 0.7041656168381925,
+          "same_top": true
+        }
+      },
+      "hand_risk_path": {
+        "attribute": "open_cases_min",
+        "timing_risk_mass": -0.22002504020929337,
+        "phi_r_attr": -0.002470876588663239,
+        "phi_r_sum": 1.013093782466641,
+        "logit_r_minus_base": 1.0130937824666413,
+        "path": 0.0005366282274965321,
+        "stored_path": 0.0005366282274965321
+      },
+      "trace": [
+        {
+          "activity": "A_Create Application",
+          "timestamp": "2016-09-27 12:15:32.144",
+          "resource": "User_1",
+          "open_cases": 2386
+        },
+        {
+          "activity": "A_Submitted",
+          "timestamp": "2016-09-27 12:15:32.976",
+          "resource": "User_1",
+          "open_cases": 2386
+        },
+        {
+          "activity": "W_Handle leads",
+          "timestamp": "2016-09-27 12:15:33.400",
+          "resource": "User_1",
+          "open_cases": 2386
+        }
+      ],
+      "case_attributes": {
+        "ApplicationType": "New credit",
+        "LoanGoal": "Not speficied",
+        "RequestedAmount": "18500.0"
+      }
+    }
+  }
+}

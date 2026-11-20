@@ -1,0 +1,80 @@
+\begin{figure}[!htb]
+\begin{runexframe}[metaA]
+\centering
+% Figura del método (guía 13): la entrada a la izquierda; arriba, en gris, la cadena que RETIME explica (modelos
+% fijos, reutilizados); abajo, en un recuadro de color, los cuatro pasos de RETIME, numerados y con los nombres y el
+% orden de las Secciones 3.2-3.5, con el método citado y la ecuación de cada uno; la salida, destacada, a la derecha.
+% Colores: riesgo morado, efecto verde azulado, nativo café (como en las Figuras 1, 3 y 4); hacia adelante gris
+% oscuro; hacia atrás (paso iii) rosa, el color de RETIME.
+\definecolor{fwdc}{HTML}{374151}
+\definecolor{bwdc}{HTML}{0369A1}
+\definecolor{riskc}{HTML}{7C3AED}
+\definecolor{effectc}{HTML}{0F766E}
+\definecolor{nativec}{HTML}{8B5E3C}
+\definecolor{chainbg}{HTML}{F3F4F6}
+\definecolor{retimebg}{HTML}{F0F9FF}
+\providecommand{\figscale}{0.82}% all figures are drawn at this scale
+\scalebox{\figscale}{%
+\begin{tikzpicture}[x=1cm,
+  font=\scriptsize, >=Stealth,
+  box/.style={draw, rounded corners, align=center, inner sep=2.5pt, fill=white, line width=0.5pt},
+  model/.style={box, draw=#1, line width=0.9pt, text width=2.45cm},
+  step/.style={draw=#1, rounded corners, align=left, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}, inner sep=3pt, fill=white, line width=0.9pt, text width=2.75cm, minimum height=0.95cm},
+  stepno/.style={circle, fill=#1, text=white, font=\scriptsize\bfseries, inner sep=0pt, minimum size=10.5pt},
+  flow/.style={->, fwdc, line width=0.6pt},
+  back/.style={->, bwdc, dashed, line width=0.9pt},
+  uses/.style={fwdc, dotted, line width=0.8pt},
+  lab/.style={font=\scriptsize\itshape, inner sep=1pt},
+  band/.style={font=\scriptsize\bfseries, anchor=north west, inner sep=2pt}
+]
+% --- entrada
+\node[draw, cylinder, shape border rotate=90, aspect=0.25, minimum width=1.4cm, minimum height=1.3cm, align=center, fill=white, inner sep=1pt] (log) at (0.7,2.45) {Event log:\\case prefix};
+
+% --- la cadena que RETIME explica (modelos fijos)
+\fill[chainbg, rounded corners] (1.6,0.7) rectangle (10.6,4.25);
+\node[band] at (1.6,4.25) {The PsPM chain of models RETIME explains, with fixed models (Section~\ref{sec:provenance})};
+\node[model=riskc] (risk) at (3.35,3.45) {Risk model\\chance of failure};
+\node[model=nativec] (native) at (3.35,2.45) {Native features\\relative position,\\available resources};
+\node[model=effectc] (effect) at (3.35,1.36) {Effect model\\chance of failure with / without\\a second loan offer};
+\node[box] (state) at (5.95,2.45) {State};
+\node[box, text width=1.85cm] (timing) at (7.65,2.45) {Timing model\\margin};
+\node[box, text width=1.5cm] (decision) at (9.6,2.45) {Decision\\intervene / wait};
+\draw[flow] (log.east) -- (risk.west);
+\draw[flow] (log.east) -- (native.west);
+\draw[flow] (log.east) -- (effect.west);
+\draw[flow] (risk.east) -- (state);
+\draw[flow] (native.east) -- (state);
+\draw[flow] (effect.east) -- (state);
+\draw[flow] (state) -- (timing);
+\draw[flow] (timing) -- (decision);
+% paso iii: hacia atrás, del modelo de timing a los modelos de riesgo y de efecto
+\draw[back] (timing.north) to[out=110, in=0] node[lab, text=bwdc, above, pos=0.55] {iii: traced back through the risk model} (risk.east);
+\draw[back] (timing.south) to[out=-110, in=0] node[lab, text=bwdc, right, pos=0.07] {iii: traced back through the effect model} (effect.east);
+
+% --- salida
+\node[draw=black, line width=1.3pt, rounded corners, align=center, text width=2.9cm, inner sep=3pt, fill=white] (out) at (12.8,1.65)
+  {\textbf{Composed explanation}\\which case attributes make the timing model decide to \mbox{intervene}, and through which model};
+
+% --- RETIME (lo propio)
+\fill[retimebg, rounded corners] (1.6,-1.3) rectangle (14.4,0.6);
+\draw[bwdc!60, rounded corners, line width=0.6pt] (1.6,-1.3) rectangle (14.4,0.6);
+\node[band, text=bwdc] at (1.6,0.6) {RETIME (Section~\ref{sec:framework})};
+\node[step=fwdc] (s1) at (3.2,-0.6) {\hspace*{11pt}\textbf{Risk and effect}\\\hspace*{11pt}\textbf{explanations}};
+\node[step=fwdc] (s2) at (6.4,-0.6) {\hspace*{11pt}\textbf{Timing}\\\hspace*{11pt}\textbf{explanation}};
+\node[step=bwdc] (s3) at (9.6,-0.6) {\hspace*{11pt}\textbf{Composition}};
+\node[step=fwdc] (s4) at (12.8,-0.6) {\hspace*{11pt}\textbf{Verification}};
+\foreach \s/\n/\c in {s1/i/fwdc, s2/ii/fwdc, s3/iii/bwdc, s4/iv/fwdc}
+  \node[stepno=\c] (no\s) at ([xshift=7.5pt,yshift=-7.5pt]\s.north west) {\n};
+\draw[flow] (s1) -- (s2);
+\draw[flow] (s2) -- (s3);
+\draw[flow] (s3) -- (s4);
+\draw[flow, line width=0.9pt] (s4) -- node[lab, left=2.5pt, pos=0.72] {checked on the chain of models} (out);
+% qué lee cada paso de la cadena
+\draw[uses] ([xshift=1.0cm]s1.north) -- node[lab, right, pos=0.78] {explains} ([xshift=1.0cm]s1.north |- effect.south);
+\draw[uses] ([xshift=0.9cm]s2.north) -- node[lab, right, pos=0.4] {explains} ([xshift=0.9cm]s2.north |- timing.south);
+\end{tikzpicture}}
+\caption{The four steps of RETIME}
+\Description{Method overview. On the left, an event log gives the case prefix. A grey band holds the chain of models RETIME explains, with fixed models: the prefix feeds the risk model (chance of failure), the native features (relative position, available resources) and the effect model (chance of failure with and without a second loan offer), which form the state; the timing model turns the state into a margin and the decision to intervene or wait. Two dashed blue arrows, step iii, run back from the timing model to the risk model and to the effect model, in proportion to their explanations. Below, a blue band holds RETIME's four numbered steps from left to right: (i) risk and effect explanations; (ii) timing explanation; (iii) composition; (iv) verification. Dotted lines link steps i and ii to the models they explain. On the right, the output: the composed explanation, which case attributes make the timing model decide to intervene and through which model.}
+\label{fig:composition}
+\end{runexframe}
+\end{figure}

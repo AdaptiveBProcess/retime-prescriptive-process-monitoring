@@ -1,0 +1,97 @@
+\begin{figure}[!htb]
+\begin{runexframe}
+\centering
+% Figura del running example en la Introducción (guía 14): muestra el problema y el resultado deseado, no el
+% mecanismo. Arriba, el caso: los tres eventos que A y W comparten, la línea del punto de decisión y el resto del
+% caso, aún desconocido. Debajo, un carril por aplicación: lo que se sabe de ella, la decisión, lo que dice cada
+% explicación sola (el problema: ninguna dice qué atributo del caso decide, en rojo) y la forma del resultado
+% buscado (en verde, discontinuo, sin valores: la guía 11 no revela en la Introducción el número que da el método). Valores: los guardados del par (cards_running_example.json), sin volver a correr nada.
+% Proceso frente a modelo: caja blanca de borde sólido = registrado en el log del proceso; caja gris = calculado
+% por un modelo de machine learning. Dentro de las explicaciones, un atributo del caso va en un recuadro blanco,
+% así se ve que la de timing nombra una salida de modelo y que RETIME vuelve a un atributo del caso.
+\definecolor{riskc}{HTML}{7C3AED}
+\definecolor{effectc}{HTML}{0F766E}
+\definecolor{nativec}{HTML}{8B5E3C}
+\definecolor{posc}{HTML}{C2410C}
+\definecolor{negc}{HTML}{1D4ED8}
+\definecolor{probc}{HTML}{B91C1C}
+\definecolor{okc}{HTML}{15803D}
+\definecolor{modbg}{HTML}{E5E7EB}
+% letras en círculo: el orden de lectura de la figura, con el estilo de los círculos de la Figura 2
+\newcommand{\zl}[1]{\tikz[baseline=(z.base)]\node[circle, fill=black!75, text=white, font=\scriptsize\bfseries\upshape, inner sep=0pt, minimum size=10.5pt] (z) {#1};\,}
+\newsavebox{\zla}\newsavebox{\zlb}\newsavebox{\zlc}\newsavebox{\zld}\newsavebox{\zle}
+\sbox{\zla}{\zl{a}}\sbox{\zlb}{\zl{b}}\sbox{\zlc}{\zl{c}}\sbox{\zld}{\zl{d}}\sbox{\zle}{\zl{e}}
+% muestras de la leyenda
+\newsavebox{\lgw}\newsavebox{\lgg}\newsavebox{\lgt}\newsavebox{\lgr}
+\sbox{\lgw}{\tikz[baseline=0pt]\draw[black, line width=0.5pt, fill=white, rounded corners=1pt] (0,0) rectangle (10pt,7pt);}
+\sbox{\lgt}{\tikz[baseline=0pt]\draw[probc, dashed, line width=0.9pt, fill=modbg, rounded corners=1pt] (0,0) rectangle (10pt,7pt);}
+\sbox{\lgr}{\tikz[baseline=0pt]\draw[okc, double, double distance=1.2pt, line width=0.6pt, fill=modbg, rounded corners=1pt] (0,0) rectangle (10pt,7pt);}
+\sbox{\lgg}{\tikz[baseline=0pt]\draw[black, line width=0.5pt, fill=modbg, rounded corners=1pt] (0,0) rectangle (10pt,7pt);}
+% \att{...}: un atributo del caso dentro de una explicación, en un recuadro blanco como el de los datos del proceso
+\newcommand{\att}[2][1.3cm]{{\setlength{\fboxsep}{1.2pt}\setlength{\fboxrule}{0.5pt}\fcolorbox{black}{white}{\parbox{#1}{\centering #2}}}}
+\providecommand{\figscale}{0.82}% all figures are drawn at this scale
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[x=1cm, font=\scriptsize, >=Stealth,
+  box/.style={draw, rounded corners, align=center, inner sep=2.5pt, fill=white, line width=0.5pt, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  ev/.style={box, text width=2.1cm, minimum height=0.62cm},
+  why/.style={box, draw=#1, fill=modbg, line width=0.9pt, text width=1.6cm, minimum height=1.0cm},
+  head/.style={font=\scriptsize\itshape, align=center, text width=#1, anchor=north},
+  flow/.style={->, black!75, line width=0.6pt}
+]
+% --- el caso: lo observado y lo que aún no se sabe
+\node[font=\scriptsize\bfseries, anchor=west] at (0.0,3.5) {\usebox{\zla}The first three events, the same for \textit{A} and \textit{W} (Section~\ref{sec:prelim})};
+\node[ev] (e1) at (1.4,3.05) {1.\ case created};
+\node[ev] (e2) at (4.5,3.05) {2.\ submitted by the applicant};
+\node[ev] (e3) at (7.6,3.05) {3.\ a resource follows up the lead};
+\draw[flow] (e1) -- (e2);
+\draw[flow] (e2) -- (e3);
+\draw[dashed, line width=0.8pt] (9.1,3.7) -- (9.1,2.7);
+\node[font=\scriptsize\bfseries, anchor=west, align=left] at (9.2,3.3) {decision point:\\intervene or wait?};
+\node[box, dashed, draw=black!50, text=black!70, text width=4.6cm, minimum height=0.62cm] (unk) at (15.85,3.05) {rest of the case: not yet known};
+\draw[flow, dashed] (e3) -- (unk);
+\draw[rounded corners=3pt, line width=0.6pt, black!70] (-0.12,2.6) rectangle ([xshift=4pt]unk.east |- 0,3.95);
+
+% --- cabeceras de las columnas
+\node[head=5.8cm] at (2.95,2.45) {\usebox{\zlb}what is known of the case};
+\node[head=1.7cm] at (7.15,2.45) {\usebox{\zlc}decision of the timing model};
+\node[head=5.2cm] at (11.3,2.45) {\usebox{\zld}explained separately (Figure~\ref{fig:threelevel}):\\the top reason of each model};
+\node[head=3.8cm] at (16.6,2.45) {\usebox{\zle}sought from RETIME (Section~\ref{sec:composition-def}):\\the case attribute behind the decision};
+
+% --- carril A
+\node[box, text width=2.6cm, align=left] (kA) at (1.4,1.02) {\textbf{\textit{A}}: car loan, \texteuro{}9,000; 1,963 cases open; \textcolor{nativec}{3 of 3 resources available}};
+\node[box, fill=modbg, text width=2.6cm, align=left] (mA) at (4.5,1.02) {\textcolor{riskc}{chance of failure} 0.53; \textcolor{effectc}{0.58 without a second loan offer, 0.41 with}};
+\node[box, fill=posc, text=white, font=\scriptsize\bfseries, text width=1.72cm, inner sep=2pt, minimum height=1.0cm] (dA) at (7.15,1.02) {INTERVENE\\second loan offer};
+\node[why=riskc] (rA) at (9.25,1.02) {{\tiny\textit{\textcolor{riskc}{risk model:}}}\\[1pt]\att{alphabetically last activity}};
+\node[why=effectc] (fA) at (11.2,1.02) {{\tiny\textit{\textcolor{effectc}{effect model:}}}\\[1pt]\att{nothing withdrawn yet}};
+\node[why=probc, dashed, text width=1.9cm] (tA) at (13.4,1.02) {{\tiny\textit{timing model:}}\\chance of failure without a second loan offer};
+\node[box, draw=okc, double, double distance=1.2pt, fill=modbg, line width=0.6pt, text width=2.9cm, minimum height=1.0cm] (cA) at (16.6,1.02) {\att[2.6cm]{\textbf{which case attribute?}}\\[1pt]through which model?};
+\draw[flow] (kA) -- (mA);
+\draw[rounded corners=3pt, line width=0.6pt, black!70] ([shift={(-3.5pt,4.5pt)}]kA.north west) rectangle ([shift={(3.5pt,-4.5pt)}]mA.south east);
+\draw[flow] ([xshift=3.5pt]mA.east) -- (dA);
+\draw[rounded corners=3pt, line width=0.6pt, black!70] ([shift={(-3.5pt,3.5pt)}]rA.west |- fA.north) rectangle ([shift={(3.5pt,-3.5pt)}]tA.east |- fA.south);
+\draw[flow] (dA) -- ([xshift=-3.5pt]rA.west);
+\draw[flow] ([xshift=3.5pt]tA.east) -- (cA);
+
+% --- carril W
+\node[box, text width=2.6cm, align=left] (kW) at (1.4,-0.33) {\textbf{\textit{W}}: no loan goal, \texteuro{}18,500; 2,386 cases open; \textcolor{nativec}{2 of 3 resources available}};
+\node[box, fill=modbg, text width=2.6cm, align=left] (mW) at (4.5,-0.33) {\textcolor{riskc}{chance of failure} 0.59; \textcolor{effectc}{0.54 without a second loan offer, 0.70 with}};
+\node[box, fill=negc, text=white, font=\scriptsize\bfseries, text width=1.72cm, inner sep=2pt, minimum height=1.0cm] (dW) at (7.15,-0.33) {WAIT\\no second loan offer};
+\node[why=riskc] (rW) at (9.25,-0.33) {{\tiny\textit{\textcolor{riskc}{risk model:}}}\\[1pt]\att{no loan goal given}};
+\node[why=effectc] (fW) at (11.2,-0.33) {{\tiny\textit{\textcolor{effectc}{effect model:}}}\\[1pt]\att{2,386 cases open}};
+\node[why=probc, dashed, text width=1.9cm] (tW) at (13.4,-0.33) {{\tiny\textit{timing model:}}\\chance of failure with a second loan offer};
+\node[box, draw=okc, double, double distance=1.2pt, fill=modbg, line width=0.6pt, text width=2.9cm, minimum height=1.0cm] (cW) at (16.6,-0.33) {\att[2.6cm]{\textbf{which case attribute?}}\\[1pt]through which model?};
+\draw[flow] (kW) -- (mW);
+\draw[rounded corners=3pt, line width=0.6pt, black!70] ([shift={(-3.5pt,4.5pt)}]kW.north west) rectangle ([shift={(3.5pt,-4.5pt)}]mW.south east);
+\draw[flow] ([xshift=3.5pt]mW.east) -- (dW);
+\draw[rounded corners=3pt, line width=0.6pt, black!70] ([shift={(-3.5pt,3.5pt)}]rW.west |- fW.north) rectangle ([shift={(3.5pt,-3.5pt)}]tW.east |- fW.south);
+\draw[flow] (dW) -- ([xshift=-3.5pt]rW.west);
+\draw[flow] ([xshift=3.5pt]tW.east) -- (cW);
+
+% --- leyenda: proceso frente a modelo
+\node[anchor=north west, align=left, inner sep=0pt] at (0.0,-1.15) {\usebox{\lgw}\ recorded in the log\quad\usebox{\lgg}\ computed by a model\\[2pt]\textcolor{nativec}{brown}: read by the timing model as recorded\quad \usebox{\lgt}\ a model output, not a case attribute\quad \usebox{\lgr}\ what RETIME gives};
+\end{tikzpicture}}
+\caption{\textcolor{metaB}{Running example: two BPIC2017 cases with the same three events and a similar chance of failure, and opposite decisions}}
+\Description{Circled letters a to e give the reading order: (a) the case, (b) what is known of each case, (c) the decision of the timing model, (d) each model explained separately and (e) their composition by RETIME, and arrows join the columns. White boxes with a solid border hold what is recorded in the event log of the process; grey boxes hold what a machine-learning model computes; brown marks what the timing model reads as recorded. At the top, the three events that cases A and W share: case created, submitted by the applicant, a resource follows up the lead; a dashed line marks the decision point, intervene or wait, and the rest of the case is shown as not yet known. Below, one row per case. For A, the event log gives a car loan of 9,000 euros with 1,963 cases open and 3 of 3 resources available, and the models give a chance of failure of 0.53, and of 0.58 without a second loan offer and 0.41 with one; the timing model decides to make a second loan offer. For W, the event log gives no loan goal, 18,500 euros and 2,386 cases open and 2 of 3 resources available, and the models give a chance of failure of 0.59, and of 0.54 without and 0.70 with a second loan offer; the timing model decides to wait. Explained separately, the top reasons are, for A, the alphabetically last activity (risk model), nothing withdrawn yet (effect model) and the chance of failure without a second loan offer (timing model), and, for W, no loan goal given, 2,386 cases open and the chance of failure with a second loan offer; the risk and effect reasons are case attributes, shown in white boxes, while the timing reason is a model output; the timing reason is shown with a red dashed border. With a green double border, the result sought for each decision, which RETIME gives in Section 3.4: which case attribute it rests on, and through which model.}
+\label{fig:running}
+\end{runexframe}
+\end{figure}

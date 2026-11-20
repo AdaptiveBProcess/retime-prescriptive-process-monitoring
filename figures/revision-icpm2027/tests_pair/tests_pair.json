@@ -1,0 +1,114 @@
+{
+  "A": {
+    "case_id": "Application_381087716",
+    "dq": 1.7203278541564941,
+    "f0_signed": 1.7203282117843628,
+    "deletion": {
+      "1": {
+        "masked": [
+          "Activity"
+        ],
+        "f_after_guided": 1.7203282117843628,
+        "abs_guided": 0.0,
+        "abs_anti": 0.0,
+        "abs_random": 0.03343642950057983,
+        "flip_guided": 0.0
+      },
+      "3": {
+        "masked": [
+          "Activity",
+          "FirstWithdrawalAmount_max",
+          "LoanGoal"
+        ],
+        "f_after_guided": 1.1549662351608276,
+        "abs_guided": 0.5653619766235352,
+        "abs_anti": 0.0,
+        "abs_random": 0.08233062028884888,
+        "flip_guided": 0.0
+      }
+    },
+    "patching": {
+      "attribute": "Activity",
+      "case_value": "W_Handle leads",
+      "ref_value": "W_Handle leads",
+      "measured": {
+        "risk": 0.0,
+        "effect_T": 0.0,
+        "effect_U": 0.0
+      },
+      "traced": {
+        "risk": 0.3349888798882932,
+        "effect_T": -0.260810370522961,
+        "effect_U": 1.0837272839793537
+      },
+      "c_measured": null,
+      "c_traced": 0.3105760643639873
+    },
+    "fallback": {
+      "reliability": false,
+      "Proba_if_Treated": false,
+      "Proba_if_Untreated": false
+    },
+    "nondegeneracy_ratio": {
+      "reliability": 0.5172969082198401,
+      "Proba_if_Treated": 0.5692206177020873,
+      "Proba_if_Untreated": 0.7313372660201048
+    }
+  },
+  "W": {
+    "case_id": "Application_519115732",
+    "dq": -2.3577003479003906,
+    "f0_signed": 2.357700824737549,
+    "deletion": {
+      "1": {
+        "masked": [
+          "open_cases_min"
+        ],
+        "f_after_guided": -0.5628981590270996,
+        "abs_guided": 2.9205989837646484,
+        "abs_anti": 0.0,
+        "abs_random": 0.12528976202011108,
+        "flip_guided": 1.0
+      },
+      "3": {
+        "masked": [
+          "open_cases_min",
+          "LoanGoal",
+          "Activity"
+        ],
+        "f_after_guided": -1.592512845993042,
+        "abs_guided": 3.950213670730591,
+        "abs_anti": 0.0,
+        "abs_random": 0.4521660268306732,
+        "flip_guided": 1.0
+      }
+    },
+    "patching": {
+      "attribute": "open_cases_min",
+      "case_value": 2386.0,
+      "ref_value": 2091.545141983955,
+      "measured": {
+        "risk": 0.016501426696777344,
+        "effect_T": 2.91815984249115,
+        "effect_U": 0.0
+      },
+      "traced": {
+        "risk": 0.0005366282274965321,
+        "effect_T": 1.2521424064010165,
+        "effect_U": -0.007702936011043066
+      },
+      "c_measured": 0.0,
+      "c_traced": 0.01222317708517251
+    },
+    "fallback": {
+      "reliability": false,
+      "Proba_if_Treated": false,
+      "Proba_if_Untreated": false
+    },
+    "nondegeneracy_ratio": {
+      "reliability": 0.5005750281418847,
+      "Proba_if_Treated": 0.7575995064564174,
+      "Proba_if_Untreated": 0.6081117489358057
+    }
+  }
+}
