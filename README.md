@@ -1,4 +1,4 @@
-# timing-explanations-pspm
+# retime-prescriptive-process-monitoring
 
 Supporting code for the paper *"How Multiple Explanations Behind a Decision
 Compose in Prescriptive Process Monitoring"* (RETIME: Risk, Effect and TIming
@@ -49,8 +49,8 @@ need about 3 GB of disk for the environment.
 Once the data is in place (step 2 below), this does steps 1 to 3:
 
 ```bash
-git clone https://github.com/andresmosqueraw/timing-explanations-pspm.git
-cd timing-explanations-pspm
+git clone https://github.com/andresmosqueraw/retime-prescriptive-process-monitoring.git
+cd retime-prescriptive-process-monitoring
 ./reproduce.sh
 ```
 
@@ -71,8 +71,8 @@ manual steps below do the same thing one command at a time.
 ### 1. Clone and create the environment
 
 ```bash
-git clone https://github.com/andresmosqueraw/timing-explanations-pspm.git
-cd timing-explanations-pspm
+git clone https://github.com/andresmosqueraw/retime-prescriptive-process-monitoring.git
+cd retime-prescriptive-process-monitoring
 python3 -m venv .venv
 .venv/bin/pip install --upgrade pip
 .venv/bin/pip install --extra-index-url https://download.pytorch.org/whl/cpu \
@@ -651,4 +651,3 @@ kills the calling shell; use `pkill -f '^python effect_model\.py'` (or the
 
 This repository (code, trained checkpoints, manifests, and result JSONs)
 is released under CC0 1.0 (public domain dedication); see `LICENSE`.
-# retime-prescriptive-process-monitoring
